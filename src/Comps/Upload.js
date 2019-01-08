@@ -6,6 +6,7 @@ import "./styles/Upload.css"
 class Upload extends React.Component  {
   _onSubmit =e=> {
     e.preventDefault()
+    // console.log(this)
     this.props.onClick(this.FileList[0])
   }
   render() {
