@@ -1,0 +1,16 @@
+
+.dataTables_info{
+    width:75% !important;
+}
+.dataTables_filter{
+    width:25% !important;
+}
+.pagination{
+    width: 90% !important;
+}
+td{
+    padding: 1% !important
+}
+.dataTables_wrapper{
+    height: 10px !important;
+}
