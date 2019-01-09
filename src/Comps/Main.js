@@ -7,10 +7,15 @@ import Upload from './Upload'
 import {MDBContainer, MDBRow, MDBCol} from 'mdbreact'
 import "./styles/Main.css"
 import receiveWeather from "../Redux/Axions/receiveweather"
+import kamikaze from "../Redux/Axions/calendar"
 class Main extends Component {
-    componentDidMount = () => {
-        this.props.receiveWeather();
+    state = {
+        date: new Date(),
     }
+    // componentDidUpdate = () => {
+    //     this.props.kamikaze(this.state.date)
+    // }
+    onChange = date => this.props.kamikaze({date})
     render = () => {
         return (
         <>
@@ -24,7 +29,9 @@ class Main extends Component {
             <MDBCol 
             size="6"
             id="CalCon">
-            <Calendar/>
+            <Calendar
+            onChange={this.onChange}
+            value={this.state.date}/>
             <Upload/>
             </MDBCol>
             </MDBRow>
@@ -39,6 +46,9 @@ const mapStateToProps = ({days}) => ({
 const mapDispatchToProps = dispatch => ({
     receiveWeather: () => {
         dispatch(receiveWeather());
+    },
+    kamikaze: value =>{
+        dispatch(kamikaze(value))
     }
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Main);
