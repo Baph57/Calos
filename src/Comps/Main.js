@@ -12,8 +12,8 @@ class Main extends Component {
     state = {
         date: new Date(),
     }
-    // componentDidUpdate = () => {
-    //     this.props.kamikaze(this.state.date)
+    // componentDidMount = () => {
+    //     this.state.date = new Date()
     // }
     onChange = date => this.props.kamikaze({date})
     render = () => {
@@ -43,12 +43,13 @@ class Main extends Component {
 const mapStateToProps = ({days}) => ({
     days
 })
-const mapDispatchToProps = dispatch => ({
-    receiveWeather: () => {
-        dispatch(receiveWeather());
-    },
-    kamikaze: value =>{
-        dispatch(kamikaze(value))
-    }
-})
-export default connect(mapStateToProps,mapDispatchToProps)(Main);
+// // const mapDispatchToProps = dispatch => ({
+//     receiveWeather: () => {
+//         dispatch(receiveWeather());
+//     // },
+//     kamikaze: value =>{
+//         dispatch(kamikaze(value))
+//     }
+// })   
+// export default connect(mapStateToProps,mapDispatchToProps)(Main);
+export default connect(mapStateToProps, {receiveWeather, kamikaze})(Main);
