@@ -4,8 +4,10 @@ import { RECEIVE_WEATHER } from "../Axions/receiveweather";
 import {CALENDAR} from "../Axions/calendar"
 import {NEW_TABLE_ROW} from "../Axions/newTableRow"
 
-let initialState = [
-    {objToShip: {}}]
+let initialState = {
+    objToShip: [{}],
+    currentDate: ""
+}
 export default function days (state = initialState, action){
     switch (action.type){
         case ON_CLICK_CONSOLE_LOG :
@@ -13,9 +15,15 @@ export default function days (state = initialState, action){
         case RECEIVE_WEATHER:
         return action.weather.map(weather => ({...weather}))
         case CALENDAR:
-        return state.map(x=>{[...x], x.objToShip = action.objToShip})
+        return {
+            ...state,
+            currentDate: action.calendar
+        }
         case NEW_TABLE_ROW:
-        return action.tableObj
+        return {
+            ...state,
+            objToShip: [...state.objToShip, action.tableObj]
+        }
         default:
         return state
     }

@@ -18,8 +18,7 @@ class TestSideNav extends Component{
     }
   }
   consoleLog = () =>{console.log(typeof this.props.days.date,this.props.days.date.toDateString())}
-  componentDidMount = () => {this.props.days.objToShip ={}}
-
+  componentDidMount = () => {console.log(this.props)}
   // correctDate=()=>{ return this.props.days.date}
   newRow = () =>{this.props.newTableRow(this.state)
     //  this.state ={ date: moment(this.props.days.date).format('MMMM Do YYYY, h:mm:ss a')}
@@ -34,15 +33,6 @@ class TestSideNav extends Component{
         this.setState({objToShip})
   }
   render = () => {
-    const help = this.props.days.objToShip.length ?
-    this.props.days.objToShip.map(x => 
-    <tr>
-      <th scope="row">x</th>
-      <td>x.title</td>
-      <td>x.description</td>
-      <td>x.date</td>
-    </tr>
-      ) : null
   //   var trackersObj = {}
   // const trackers = this.trackersObj.length ? this.trackersObj.map(x=>
   //   trackersObj = [...this.state], this.state) : null
@@ -93,37 +83,18 @@ class TestSideNav extends Component{
 
   return (
     <>
-    <table class="table table-sm table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-    {help}
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<MDBInput value={this.state.objToShip["title"]} onChange={this._onChange.bind(this)} name='title' size="sm" style={{margin: "0px !important", height: "5px"}}/>,
-<MDBInput value={this.state.objToShip["description"]} onChange={this._onChange.bind(this)} name='description' size="sm" style={{margin: "0px !important", height: "5px"}}/>,
-<MDBInput onChange={this.state.date = moment(this.props.days.date).format('MMMM Do YYYY, h:mm:ss a')} size="sm" name='startDate' value={moment(this.props.days.date).format('MMMM Do YYYY, h:mm:ss a')} style={{margin: "0px !important", height: "5px"}}/>,
-<MDBBtn onClick={this.newRow}/>,
-
+<MDBInput value={this.state.objToShip["title"]} onChange={this._onChange.bind(this)} name='title' size="sm" style={{margin: "0px !important", height: "5px"}}/>
+<MDBInput value={this.state.objToShip["description"]} onChange={this._onChange.bind(this)} name='description' size="sm" style={{margin: "0px !important", height: "5px"}}/>
+<MDBInput onChange={this.state.date = moment(this.props.days.date).format('MMMM Do YYYY, h:mm:ss a')} size="sm" name='startDate' value={moment(this.props.days.date).format('MMMM Do YYYY, h:mm:ss a')} style={{margin: "0px !important", height: "5px"}}/>
+<MDBBtn onClick={this.newRow} value="Save Object">Save Object</MDBBtn>
+<MDBBtn />
+    <MDBDataTable
+        className="SideNav"
+        striped
+        bordered
+        hover
+        data={this.props.days.objToShip}
+    />
     {/* <MDBBtn placeholder="Hello" onClick={this.consoleLog}/> */}
     </>
   );
