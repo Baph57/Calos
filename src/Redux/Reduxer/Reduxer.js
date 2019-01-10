@@ -7,8 +7,9 @@ import moment from "moment"
 let initialState = {
     objToShip: [],
     currentDate: moment().format("MMMM Do YYYY"),
-    dateForChart: moment().format("MM D YYYY"),
+    dateForChart: moment().format("MM D YYYY").split(' ').reverse().join(' '),
     epochTime: new Date().getTime(),
+    chartArray: [],
     weather: []
 }
 export default function days (state = initialState, action){
@@ -19,7 +20,7 @@ export default function days (state = initialState, action){
             weather: action.weather
         }
         case CALENDAR:
-        console.log(moment(action.calendar.date).format("MM D YYYY").getTime())
+        state.weather.list.map(x=>{state.chartArray.push(x.dt_txt)})
         return {
             ...state,
             currentDate: moment(action.calendar.date).format("MMMM Do YYYY"),
