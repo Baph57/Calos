@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 // import SideNav from "./SideNav"
 import TestSideNav from "./TestSideNav"
+import SideNav from "./SideNav"
 import { connect } from "react-redux"
 import Calendar from 'react-calendar'
 import Upload from './Upload'
 import {MDBContainer, MDBRow, MDBCol} from 'mdbreact'
 import "./styles/Main.css"
-import receiveWeather from "../Redux/Axions/receiveweather"
+// import receiveWeather from "../Redux/Axions/receiveweather"
 import kamikaze from "../Redux/Axions/calendar"
+import WeatherChart from './WeatherChart';
+// import DataTable from "./dataTable"
 class Main extends Component {
     state = {
         date: new Date(),
     }
-    // componentDidMount = () => {
-    //     this.state.date = new Date()
-    // }
     onChange = date => this.props.kamikaze({date})
     render = () => {
         return (
@@ -23,8 +23,7 @@ class Main extends Component {
             <MDBRow>
             <MDBCol 
             size="6">
-            <TestSideNav/>
-            {/* <SideNav/> */}
+            <SideNav/>
             </MDBCol>
             <MDBCol 
             size="6"
@@ -35,13 +34,21 @@ class Main extends Component {
             <Upload/>
             </MDBCol>
             </MDBRow>
+            <MDBRow>
+                <MDBCol size="6">
+                    <TestSideNav/>
+                </MDBCol>
+                <MDBCol size='6'>
+                    <WeatherChart/>
+                </MDBCol>
+            </MDBRow>
             </MDBContainer>
         </>
         )
     }
 }
-const mapStateToProps = ({days}) => ({
-    days
+const mapStateToProps = ({days, objToShip}) => ({
+    days, objToShip
 })
 // // const mapDispatchToProps = dispatch => ({
 //     receiveWeather: () => {
@@ -52,4 +59,11 @@ const mapStateToProps = ({days}) => ({
 //     }
 // })   
 // export default connect(mapStateToProps,mapDispatchToProps)(Main);
-export default connect(mapStateToProps, {receiveWeather, kamikaze})(Main);
+export default connect(mapStateToProps, {kamikaze})(Main);
+/*    componentDidMount = async() => {
+        try{
+        this.props.receiveWeather()
+        this.props.correctEpochTime()
+        }
+        catch(e){console.log(e)}
+    }*/

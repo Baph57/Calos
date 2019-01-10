@@ -1,3 +1,4 @@
+
 export const CALENDAR = "CALENDAR";
 
 export default function kamikaze(calendar) {

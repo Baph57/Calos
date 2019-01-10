@@ -12,18 +12,12 @@ import {
   Switch, 
   // Redirect 
 } from 'react-router-dom'
-
+import receiveWeather from "./Redux/Axions/receiveweather"
 
 class App extends Component {
-  // state={}
-  // uploadFile = (evt) => {
-  // const file = evt.target.files[0];
-  // const name = file.name;
-
-  // Storage.put(name, file).then(() => {
-  //   this.setState({ file: name });
-  //   })
-  // }
+  componentDidMount=()=>{
+    this.props.receiveWeather()
+  }
   render = () => {
     return (
       <>
@@ -31,8 +25,6 @@ class App extends Component {
         <>
         <TopNav/>
         <Main/>
-        {/* <input type="file" onChange={this.uploadFile} />
-        <S3Album level="private" path='' /> */}
         <Switch>
         </Switch>
         </>
@@ -41,5 +33,5 @@ class App extends Component {
     )
   }
 }
-
-export default connect(null,null)(App);
+const mapStateToProps = ({days}) => ({days})
+export default connect(mapStateToProps,{receiveWeather})(App);

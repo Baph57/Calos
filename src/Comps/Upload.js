@@ -1,13 +1,8 @@
 import React from 'react';
-import onClick from "../Redux/Axions/onclick"
 import {connect} from "react-redux"
 import "./styles/Upload.css"
 
 class Upload extends React.Component  {
-  _onSubmit =e=> {
-    e.preventDefault()
-    this.props.onClick(this.FileList[0])
-  }
   render() {
     return(
 <div className="input-group">
@@ -33,9 +28,4 @@ class Upload extends React.Component  {
   }
 };
 
-const mapDispatchToProps=dispatch=>({
-  _onSubmit: log=>{
-    dispatch(onClick(log))
-  }
-})
-export default connect(mapDispatchToProps,null)(Upload);
+export default connect(null,null)(Upload);
