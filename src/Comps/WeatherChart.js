@@ -1,68 +1,37 @@
 import React from "react";
 import {connect} from 'react-redux'
 import { Line } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
-
+import { MDBContainer, MDBBtn } from "mdbreact";
+import updateWeather from "../Redux/Axions/updateWeather"
 
 class WeatherChart extends React.Component {
+  // _updateFunc=()=>{this.props.updateWeather}
   state = {
-    dataLine: {
-      labels: ["12am","3am","6am","9am","12pm","3pm","6pm","9pm"],
-      datasets: [
-        {
-          label: "Weather For The Day",
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: "rgba(75,192,192,0.4)",
-          borderColor: "rgba(75,192,192,1)",
-          borderCapStyle: "butt",
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: "miter",
-          pointBorderColor: "rgba(75,192,192,1)",
-          pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "Other Weather",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(218, 0, 0,0.4)",
-            borderColor: "rgba(218, 0, 0,1)",
-            borderCapStyle: "butt",
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: "miter",
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [50, 40, 70, 40, 80, 90, 60]
-        }
-      ]
-    }
   }
-
-render() {
+  
+  render() {
+    // setTimeout(()=>{this.forceUpdate()}, 5000)
+    // setTimeout(()=>{
+      //   let omgArray = []
+      //   if(this.props.days.weather.list.length !== undefined){ 
+        //   console.log(omgArray,'props of weatherchart')
+        //   this.props.days.weather.list.map(x=>{
+          //     if(x.dt_txt.slice(0,10)===this.props.days.dateForChart){return omgArray.push(x), this.state.dataLine.datasets[0].data.push(x.main.temp_max), console.log(omgArray,"OMG",this.accArr,"ACCARR")}else{}
+          //   })}else{return console.log('please wait!')}}, 1000)
+    // let maxTempArrayHelper = this.props.days.chartArray.main.temp_max.push(this.maxTempArray)
+    if(!this.props.days.weatherArray)return null
+    console.log(this.props.days.weatherArray,'weatherarray')
+    console.log(this.props.days.chartData, 'state of chart')
     return (
+      <>
       <MDBContainer>
         <h3 className="mt-5">Line chart</h3>
-        <Line data={this.state.dataLine} options={{ responsive: true }} />
+        <Line data={this.props.days.chartData.dataLine} options={{ responsive: true }} />
       </MDBContainer>
+      <MDBBtn onClick={this.props.updateWeather}/>
+      </>
     );
   }
 }
 const mapStateToProps = ({days, weather}) => ({days,weather})
-export default connect(mapStateToProps,null)(WeatherChart)
+export default connect(mapStateToProps,{updateWeather})(WeatherChart)
