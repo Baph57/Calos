@@ -8,7 +8,17 @@
     width: 100% !important;
   }
   #CalCon{
-    margin-top: 100px !important;
+    margin-top: 10px !important;
+  }
+  .chartjs-render-monitor{
+    height: 400px !important;
+    /* margin-bottom: 100px !important; */
+    top: 100px !important;
+  }
+  .chartjs-size-monitor{
+    height: 400px !important;
+    /* margin-bottom: 100px !important; */
+    top: 100px !important;
   }
   .container{
     margin: 0px !important;

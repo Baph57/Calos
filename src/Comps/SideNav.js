@@ -1,19 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux"
-import { MDBDataTable,MDBBtn} from 'mdbreact';
+import { 
+  MDBDataTable,
+  // MDBBtn
+} from 'mdbreact';
 import "./styles/SideNav.css"
+// import Incrementer from "./Incrementer"
 
 class SideNav extends Component{
-  consoleLog =()=>{console.log(this.props)}
+  // consoleLog =()=>{console.log(this.props.days.objToShip)}
+  // deleteEntry=e=>{}
   render=()=>{
+    // var entryCounter = 1
+    console.log('asdfdfff', this.props.days.objToShip)
   const rowz = this.props.days.objToShip.length ?
-    this.props.days.objToShip.map(row=>
-      ({
+    this.props.days.objToShip.map(row=>({
         title: row.objToShip.title,
         description: row.objToShip.description,
-        startDate: row.objToShip.date
+        date: row.objToShip.date,
       })
-    ) : ''
+      ) : ''
+      console.log(rowz)
   const data = {
     columns: [
       {
@@ -30,17 +37,15 @@ class SideNav extends Component{
       },
       {
         label: 'Start Date',
-        field: 'startDate',
+        field: 'date',
         sort: 'asc',
         width: 200
       }
     ],
-    rows: rowz
+    rows: (rowz)
   };
-
   return (
     <>
-        <MDBBtn onClick={this.consoleLog}>consolelogprops</MDBBtn>
     <MDBDataTable
         className="SideNav"
         striped
@@ -51,5 +56,5 @@ class SideNav extends Component{
     </>
   );
 }}
-const mapStateToProps = ({days, objToShip}) => ({days, objToShip})
+const mapStateToProps = ({days}) => ({days})
 export default connect(mapStateToProps,null)(SideNav);

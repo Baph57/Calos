@@ -28,42 +28,17 @@ class TopNav extends Component {
     return (
       <Navbar color="stylish-color-dark" dark expand="md" style={{}}>
           <NavbarBrand>
-            <strong className="white-text">Navbar</strong>
+            <strong className="white-text">Calos</strong>
           </NavbarBrand>
           <NavbarToggler
             onClick={this.toggleCollapse}
           />
           <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <NavbarNav left>
-              <NavItem active>
-                <NavLink to="#!">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="#!">Features</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="#!">Pricing</NavLink>
-              </NavItem>
-              <NavItem>
-                <Dropdown>
-                  <DropdownToggle  nav caret>
-                    <div className="d-none d-md-inline">Dropdown</div>
-                  </DropdownToggle>
-                  <DropdownMenu className="dropdown-default"right>
-                    <DropdownItem href="#!">Action</DropdownItem>
-                    <DropdownItem href="#!">Another Action</DropdownItem>
-                    <DropdownItem href="#!">Something else here</DropdownItem>
-                    <DropdownItem href="#!">Something else here</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </NavItem>
             </NavbarNav>
             <NavbarNav right>
               <NavItem>
                 <NavLink className="waves-effect waves-light" to="#!"><Fa icon="twitter" /></NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="google-plus" /></NavLink>
               </NavItem>
               <NavItem>
                 <Dropdown>

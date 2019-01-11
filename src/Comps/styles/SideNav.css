@@ -1,6 +1,7 @@
 
 .dataTables_info{
     width:75% !important;
+    /* height: 290px !important; */
 }
 .dataTables_filter{
     width:25% !important;
@@ -13,4 +14,7 @@ td{
 }
 .dataTables_wrapper{
     height: 10px !important;
+}
+.table-bordered{
+    height: 50% !important;
 }
