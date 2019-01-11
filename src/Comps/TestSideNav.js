@@ -14,7 +14,7 @@ class TestSideNav extends Component{
     // increment:'',
     // decrement:''
     objToShip:{
-      date: moment(this.props.days.currentDate).format('MMMM Do YYYY, h:mm:ss a')
+      date: this.props.days.currentDate
     }
   }
   consoleLog = () =>{console.log(this.props)}
@@ -35,15 +35,15 @@ class TestSideNav extends Component{
   render = () =>{
   return (
     <>
-<MDBInput value={this.state.objToShip["title"]} onChange={this._onChange.bind(this)} name='title' size="sm" style={{margin: "0px !important", height: "5px"}}/>
-<MDBInput value={this.state.objToShip["description"]} onChange={this._onChange.bind(this)} name='description' size="sm" style={{margin: "0px !important", height: "5px"}}/>
-<MDBInput size="sm" name='startDate' value={this.props.days.currentDate} onChange={this._onChange.bind(this)}  style={{margin: "0px !important", height: "5px"}}/>
+<MDBInput label={'Title'}value={this.state.objToShip["title"]} onChange={this._onChange.bind(this)} name='title' size="sm" style={{margin: "0px !important"}}/>
+<MDBInput label={'Description'}value={this.state.objToShip["description"]} onChange={this._onChange.bind(this)} name='description' size="sm" style={{margin: "0px !important"}}/>
+<MDBInput size="sm" name='startDate' label={"Date: " + this.props.days.currentDate} style={{margin: "0px !important"}}/>
 <MDBBtn onClick={this.newRow} value="Save Object">Save Object</MDBBtn>
 <MDBBtn onClick={this.consoleLog}>Consolelog props </MDBBtn>
     </>
   );
 }}
-const mapStateToProps = ({days, currentDate}) => ({days, currentDate})
+const mapStateToProps = ({days}) => ({days})
 
 // const mapDispatchToProps = dispatch => ({
 //   consoleLog: ()

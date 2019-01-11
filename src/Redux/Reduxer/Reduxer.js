@@ -53,6 +53,7 @@ export default function days (state = initialState, action){
             dateForChart: placeholder3,
         }
         case NEW_TABLE_ROW:
+        console.log(action.tableObj)
         return {
             ...state,
             objToShip: [...state.objToShip, action.tableObj]
