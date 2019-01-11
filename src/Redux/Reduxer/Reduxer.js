@@ -12,57 +12,9 @@ let initialState = {
     epochTime: new Date().getTime(),
     chartArray: [],
     weather: [],
+    currentWeather: [],
     weatherArray: [],
-    chartData: [{
-            dataLine: {
-            labels: ["12am","3am","6am","9am","12pm","3pm","6pm","9pm"],
-            datasets: [
-            {
-                label: "Weather For The Day",
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
-                borderCapStyle: "butt",
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: "miter",
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
-                pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
-                pointHoverBorderWidth: 2,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                // data: this.state.weatherArray
-                data: [5, 4, 7, 4, 8, 9, 6]
-            },
-            {
-                label: "Other Weather",
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: "rgba(218, 0, 0,0.4)",
-                borderColor: "rgba(218, 0, 0,1)",
-                borderCapStyle: "butt",
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: "miter",
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
-                pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
-                pointHoverBorderWidth: 2,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                data: [50, 40, 70, 40, 80, 90, 60]
-            }
-            ]
-        }
-    }]
+    
 }
 export default function days (state = initialState, action){
     switch (action.type){
@@ -99,7 +51,6 @@ export default function days (state = initialState, action){
             ...state,
             currentDate: moment(action.calendar.date).format("MMMM Do YYYY"),
             dateForChart: placeholder3,
-            // chartData: state.dataLine.datasets[0].data = state.weatherArray
         }
         case NEW_TABLE_ROW:
         return {
@@ -109,7 +60,7 @@ export default function days (state = initialState, action){
         case UPDATE_WEATHER:
         return{
             ...state,
-            chartData: [...state.chartData,state.chartData.dataLine.datasets[0].data = state.weatherArray]
+            currentWeather: action.payload
         }
         default:
         return state

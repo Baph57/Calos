@@ -13,10 +13,11 @@ import {
   // Redirect 
 } from 'react-router-dom'
 import receiveWeather from "./Redux/Axions/receiveweather"
-
+import updateWeather from './Redux/Axions/updateWeather';
 class App extends Component {
   componentDidMount=()=>{
     this.props.receiveWeather()
+    this.props.updateWeather()
   }
   render = () => {
     return (
@@ -34,4 +35,4 @@ class App extends Component {
   }
 }
 const mapStateToProps = ({days}) => ({days})
-export default connect(mapStateToProps,{receiveWeather})(App);
+export default connect(mapStateToProps,{receiveWeather, updateWeather})(App);

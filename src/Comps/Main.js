@@ -9,7 +9,8 @@ import {MDBContainer, MDBRow, MDBCol} from 'mdbreact'
 import "./styles/Main.css"
 // import receiveWeather from "../Redux/Axions/receiveweather"
 import kamikaze from "../Redux/Axions/calendar"
-import WeatherChart from './WeatherChart';
+// import Ugh from "./Ugh"
+import CheckLoadedApp from "./datacheck"
 // import DataTable from "./dataTable"
 class Main extends Component {
     state = {
@@ -39,7 +40,7 @@ class Main extends Component {
                     <TestSideNav/>
                 </MDBCol>
                 <MDBCol size='6'>
-                    <WeatherChart/>
+                <CheckLoadedApp/>
                 </MDBCol>
             </MDBRow>
             </MDBContainer>
